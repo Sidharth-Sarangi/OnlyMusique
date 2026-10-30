@@ -2,117 +2,1255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Only Musique | Music, Thoughtfully Taught</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Website Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png">
+<title>Only Musique | A More Thoughtful Music Education</title>
 
-    <style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Only Musique | Music, Thoughtfully Taught</title>
+<meta name="description" content="Only Musique makes exceptional Western classical music education more accessible through thoughtful teaching, musicianship and artistic discovery.">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Georgia, serif;
-            background: #11110f;
-            color: #f3eee4;
-        }
+<link rel="icon" type="image/png" href="/favicon.png">
 
-        header {
-            padding: 28px 8%;
-            border-bottom: 1px solid #393832;
-            font-family: Arial, sans-serif;
-            letter-spacing: 3px;
-            font-size: 14px;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-        main {
-            max-width: 850px;
-            margin: 120px auto;
-            padding: 0 28px;
-        }
+<style>
 
-        .eyebrow {
-            color: #c7a76c;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+/* =====================================
+   1. DESIGN SYSTEM
+===================================== */
 
-        h1 {
-            font-size: clamp(44px, 8vw, 78px);
-            font-weight: normal;
-            line-height: 1.08;
-            margin: 24px 0;
-        }
+:root {
+    --blue: #142D43;
+    --blue-light: #203F55;
+    --teal: #176B68;
+    --teal-light: #398783;
+    --ivory: #EDE5D5;
+    --paper: #F5F0E5;
+    --gold: #B89A69;
+    --ink: #263B40;
+    --muted: #777B73;
+    --line: rgba(20,45,67,0.18);
 
-        p {
-            color: #c2beb5;
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 620px;
-        }
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', Arial, sans-serif;
+}
 
-        .contact {
-            display: inline-block;
-            margin-top: 24px;
-            padding: 14px 22px;
-            border: 1px solid #c7a76c;
-            color: #c7a76c;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .contact:hover {
-            background: #c7a76c;
-            color: #11110f;
-        }
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
 
-        footer {
-            padding: 25px 8%;
-            border-top: 1px solid #393832;
-            color: #8d8980;
-            font: 12px Arial, sans-serif;
-        }
-    </style>
+body {
+    background: var(--paper);
+    color: var(--blue);
+    font-family: var(--sans);
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+::selection {
+    background: var(--teal);
+    color: var(--paper);
+}
+
+/* =====================================
+   2. NAVIGATION
+===================================== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 22px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(245,240,229,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    transition: padding .4s ease;
+}
+
+header.scrolled {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.logo {
+    font-family: var(--serif);
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--teal);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+nav a {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--blue);
+    position: relative;
+}
+
+nav a:not(.nav-cta)::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--teal);
+    transition: width .4s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.nav-cta {
+    padding: 12px 19px;
+    border: 1px solid var(--blue);
+    transition: .35s ease;
+}
+
+.nav-cta:hover {
+    background: var(--blue);
+    color: var(--paper);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    color: var(--blue);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* =====================================
+   3. GENERAL TYPOGRAPHY
+===================================== */
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+h1, h2, h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+}
+
+h1 {
+    font-size: clamp(64px, 9vw, 118px);
+    line-height: .94;
+    letter-spacing: -2px;
+}
+
+h2 {
+    font-size: clamp(45px, 6vw, 76px);
+    line-height: 1;
+}
+
+.body-copy {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--muted);
+    max-width: 620px;
+}
+
+.gold {
+    color: var(--gold);
+}
+
+.italic {
+    font-style: italic;
+}
+
+/* =====================================
+   4. BUTTONS
+===================================== */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    padding: 17px 24px;
+    border: 1px solid var(--blue);
+    color: var(--blue);
+    font-size: 10px;
+    letter-spacing: 2px;
+    transition: background .45s ease,
+                color .45s ease,
+                padding .45s ease;
+}
+
+.button:hover {
+    background: var(--blue);
+    color: var(--paper);
+    padding-left: 30px;
+}
+
+.button-dark {
+    background: var(--blue);
+    color: var(--paper);
+}
+
+.button-dark:hover {
+    background: var(--teal);
+    border-color: var(--teal);
+}
+
+/* =====================================
+   5. HERO
+===================================== */
+
+.hero {
+    min-height: 790px;
+    padding: 170px 10% 110px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    margin-bottom: 35px;
+}
+
+.hero h1 span {
+    color: var(--teal);
+    font-style: italic;
+}
+
+.hero-description {
+    font-size: 16px;
+    line-height: 2;
+    color: var(--muted);
+    max-width: 470px;
+}
+
+.hero-actions {
+    margin-top: 40px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.hero-art {
+    position: relative;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Architectural arch */
+
+.arch {
+    width: 310px;
+    height: 420px;
+    border-radius: 170px 170px 0 0;
+    background: var(--blue);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 20px 25px 70px rgba(20,45,67,.14);
+    transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.arch:hover {
+    transform: translateY(-12px) rotate(-1deg);
+}
+
+.arch::before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 340px;
+    border: 1px solid rgba(237,229,213,.35);
+    border-radius: 130px 130px 0 0;
+    left: 40px;
+    top: 40px;
+}
+
+.arch::after {
+    content: "OM";
+    position: absolute;
+    font-family: var(--serif);
+    font-size: 95px;
+    color: var(--ivory);
+    top: 145px;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: -5px;
+}
+
+.arch-decoration {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: var(--teal);
+    opacity: .85;
+    clip-path: ellipse(80% 50% at 50% 100%);
+}
+
+.hero-note {
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    font-family: var(--serif);
+    font-size: 19px;
+    font-style: italic;
+    color: var(--teal);
+}
+
+/* =====================================
+   6. INTRODUCTION
+===================================== */
+
+.intro {
+    background: var(--blue);
+    color: var(--paper);
+    padding: 120px 12%;
+    text-align: center;
+}
+
+.intro .eyebrow {
+    color: var(--gold);
+}
+
+.intro h2 {
+    max-width: 900px;
+    margin: auto;
+}
+
+.intro h2 span {
+    color: #8CB5AD;
+    font-style: italic;
+}
+
+.intro .body-copy {
+    color: rgba(245,240,229,.72);
+    margin: 35px auto 0;
+}
+
+/* =====================================
+   7. PHILOSOPHY
+===================================== */
+
+.philosophy {
+    padding: 130px 10%;
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 100px;
+}
+
+.philosophy-heading {
+    position: sticky;
+    top: 130px;
+    align-self: start;
+}
+
+.philosophy-content {
+    border-top: 1px solid var(--line);
+}
+
+.principle {
+    padding: 35px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 55px 1fr;
+    gap: 20px;
+}
+
+.principle-number {
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 25px;
+}
+
+.principle h3 {
+    font-size: 29px;
+    margin-bottom: 12px;
+}
+
+.principle p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 520px;
+}
+
+/* =====================================
+   8. EDUCATION
+===================================== */
+
+.education {
+    background: var(--ivory);
+    padding: 120px 10%;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+    margin-bottom: 65px;
+}
+
+.education-header .body-copy {
+    max-width: 340px;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+
+.course-card {
+    min-height: 380px;
+    padding: 42px;
+    background: var(--blue);
+    color: var(--paper);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.course-card:nth-child(2) {
+    background: var(--teal);
+}
+
+.course-card:hover {
+    transform: translateY(-9px);
+}
+
+.course-card h3 {
+    font-size: 45px;
+}
+
+.course-card p {
+    color: rgba(245,240,229,.76);
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 380px;
+}
+
+.course-card a {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    display: inline-block;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 8px;
+    width: fit-content;
+}
+
+.course-number {
+    font-family: var(--serif);
+    font-size: 80px;
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    color: rgba(245,240,229,.10);
+}
+
+/* =====================================
+   9. LEARNING APPROACH
+===================================== */
+
+.approach {
+    padding: 130px 10%;
+    text-align: center;
+}
+
+.approach h2 {
+    max-width: 750px;
+    margin: 0 auto 30px;
+}
+
+.approach > .body-copy {
+    margin: auto;
+}
+
+.learning-steps {
+    margin-top: 75px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.step {
+    padding: 35px 20px;
+    border-right: 1px solid var(--line);
+}
+
+.step:last-child {
+    border-right: 0;
+}
+
+.step span {
+    font-family: var(--serif);
+    color: var(--gold);
+    font-size: 30px;
+}
+
+.step h3 {
+    font-size: 25px;
+    margin: 15px 0;
+}
+
+.step p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* =====================================
+   10. PERFORMANCES
+===================================== */
+
+.performance {
+    background: var(--blue);
+    color: var(--paper);
+    padding: 120px 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.performance h2 {
+    max-width: 550px;
+}
+
+.performance .body-copy {
+    color: rgba(245,240,229,.72);
+}
+
+.performance .eyebrow {
+    color: var(--gold);
+}
+
+/* =====================================
+   11. CONTACT
+===================================== */
+
+.contact {
+    padding: 130px 10%;
+    text-align: center;
+}
+
+.contact h2 {
+    margin-bottom: 25px;
+}
+
+.contact .body-copy {
+    margin: auto;
+}
+
+.contact .button {
+    margin-top: 35px;
+}
+
+/* =====================================
+   12. FOOTER
+===================================== */
+
+footer {
+    padding: 45px 8%;
+    background: #102537;
+    color: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-logo {
+    font-family: var(--serif);
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+footer p {
+    color: rgba(245,240,229,.6);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* =====================================
+   13. FLUID REVEAL ANIMATIONS
+===================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    filter: blur(5px);
+    transition:
+        opacity 1.1s ease,
+        transform 1.1s cubic-bezier(.2,.8,.2,1),
+        filter 1.1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
+/* =====================================
+   14. MOBILE RESPONSIVENESS
+===================================== */
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 18px 6%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--paper);
+        padding: 30px 7%;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--line);
+        gap: 25px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .hero {
+        padding: 145px 7% 80px;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .hero-art {
+        height: 390px;
+    }
+
+    .arch {
+        transform: scale(.85);
+    }
+
+    .philosophy {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 90px 7%;
+    }
+
+    .philosophy-heading {
+        position: static;
+    }
+
+    .education,
+    .approach,
+    .performance,
+    .contact {
+        padding: 90px 7%;
+    }
+
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .performance {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-steps {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .step:nth-child(2) {
+        border-right: 0;
+    }
+
+    .step:nth-child(-n+2) {
+        border-bottom: 1px solid var(--line);
+    }
+}
+
+@media (max-width: 520px) {
+
+    h1 {
+        font-size: 65px;
+    }
+
+    .hero-art {
+        height: 340px;
+    }
+
+    .arch {
+        transform: scale(.72);
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-card {
+        min-height: 330px;
+        padding: 30px;
+    }
+
+    .learning-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .step {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .step:last-child {
+        border-bottom: 0;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+</style>
 </head>
 
 <body>
-    <header>ONLY MUSIQUE</header>
 
-    <main>
-        <div class="eyebrow">Music education & performance</div>
+<!-- NAVIGATION -->
 
-        <h1>A life shaped<br>by music.</h1>
+<header id="header">
 
-        <p>
-            Only Musique is an independent music venture
-            dedicated to classical music education,
-            thoughtful musicianship, and artistic discovery.
+    <a href="#home" class="logo">
+        ONLY <span>MUSIQUE</span>
+    </a>
+
+    <button class="menu-toggle"
+            id="menuToggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="navigation">
+        <a href="#home">HOME</a>
+        <a href="#philosophy">PHILOSOPHY</a>
+        <a href="#education">EDUCATION</a>
+        <a href="#approach">OUR APPROACH</a>
+        <a href="#performance">ARTISTIC LIFE</a>
+        <a href="#contact" class="nav-cta">ENQUIRE</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<main>
+
+<section class="hero" id="home">
+
+    <div class="hero-content reveal">
+
+        <div class="eyebrow">
+            An independent music education venture
+        </div>
+
+        <h1>
+            Music,<br>
+            <span>without</span><br>
+            boundaries.
+        </h1>
+
+        <p class="hero-description">
+            Exceptional Western classical music education,
+            thoughtfully delivered and made accessible
+            to a wider community of aspiring musicians.
         </p>
 
-        <p>
-            From the first note to the concert stage,
-            we believe music deserves patience, curiosity,
-            and serious study.
+        <div class="hero-actions">
+
+            <a href="#education" class="button button-dark">
+                EXPLORE EDUCATION <span>↗</span>
+            </a>
+
+            <a href="#philosophy" class="button">
+                OUR PHILOSOPHY <span>↗</span>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-art reveal">
+
+        <div class="arch">
+            <div class="arch-decoration"></div>
+        </div>
+
+        <div class="hero-note">
+            A lifelong relationship with music.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTRODUCTION -->
+
+<section class="intro reveal">
+
+    <div class="eyebrow">The Only Musique idea</div>
+
+    <h2>
+        The finest musical education
+        should be an <span>opportunity,</span>
+        not a privilege.
+    </h2>
+
+    <p class="body-copy">
+        We believe in making the richness of Western classical
+        music available to more people, without compromising
+        on the depth, quality or seriousness of its teaching.
+    </p>
+
+</section>
+
+
+<!-- PHILOSOPHY -->
+
+<section class="philosophy" id="philosophy">
+
+    <div class="philosophy-heading reveal">
+
+        <div class="eyebrow">What we believe</div>
+
+        <h2>
+            Beyond<br>
+            learning<br>
+            the notes.
+        </h2>
+
+    </div>
+
+    <div class="philosophy-content">
+
+        <div class="principle reveal">
+
+            <div class="principle-number">01</div>
+
+            <div>
+                <h3>Musicianship first.</h3>
+
+                <p>
+                    Technical proficiency is only one part of
+                    becoming a musician. We place equal importance
+                    on listening, interpretation, understanding
+                    and artistic expression.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="principle reveal">
+
+            <div class="principle-number">02</div>
+
+            <div>
+                <h3>Education with depth.</h3>
+
+                <p>
+                    A meaningful musical education requires
+                    curiosity, discipline and a strong foundation.
+                    We encourage students to understand music,
+                    rather than simply reproduce it.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="principle reveal">
+
+            <div class="principle-number">03</div>
+
+            <div>
+                <h3>Accessibility without compromise.</h3>
+
+                <p>
+                    We want more students to experience high-quality
+                    classical music education, with teaching that
+                    remains rigorous, personal and encouraging.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section class="education" id="education">
+
+    <div class="education-header reveal">
+
+        <div>
+            <div class="eyebrow">The learning experience</div>
+
+            <h2>
+                Find your<br>
+                instrument.
+            </h2>
+        </div>
+
+        <p class="body-copy">
+            A considered approach to learning, built around
+            the individual student and their musical ambitions.
         </p>
 
-        <a class="contact"
-           href="mailto:contact@yourdomain.com">
-           GET IN TOUCH →
-        </a>
-    </main>
+    </div>
 
-    <footer>
-        © 2026 Only Musique. All rights reserved.
-    </footer>
+    <div class="course-grid">
+
+        <article class="course-card reveal">
+
+            <div class="course-number">01</div>
+
+            <div>
+                <div class="eyebrow" style="color:#B89A69">
+                    Strings
+                </div>
+
+                <h3>Classical Guitar</h3>
+            </div>
+
+            <div>
+                <p>
+                    Develop technique, musical understanding,
+                    repertoire and expressive independence
+                    through the classical guitar.
+                </p>
+
+                <a href="mailto:contact@yourdomain.com?subject=Classical%20Guitar%20Enquiry">
+                    ENQUIRE ABOUT GUITAR ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <article class="course-card reveal">
+
+            <div class="course-number">02</div>
+
+            <div>
+                <div class="eyebrow" style="color:#E8D5AD">
+                    Keyboard
+                </div>
+
+                <h3>Piano</h3>
+            </div>
+
+            <div>
+                <p>
+                    Build a strong musical foundation through
+                    technique, reading, repertoire, listening
+                    and artistic expression.
+                </p>
+
+                <a href="mailto:contact@yourdomain.com?subject=Piano%20Enquiry">
+                    ENQUIRE ABOUT PIANO ↗
+                </a>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- APPROACH -->
+
+<section class="approach" id="approach">
+
+    <div class="eyebrow reveal">Our approach</div>
+
+    <h2 class="reveal">
+        Learning that develops
+        <span class="italic gold">musicians,</span>
+        not just performers.
+    </h2>
+
+    <p class="body-copy reveal">
+        Every student follows a learning journey that
+        develops musical understanding alongside
+        instrumental ability.
+    </p>
+
+    <div class="learning-steps">
+
+        <div class="step reveal">
+            <span>01</span>
+            <h3>Discover</h3>
+            <p>Build curiosity and a relationship with music.</p>
+        </div>
+
+        <div class="step reveal">
+            <span>02</span>
+            <h3>Understand</h3>
+            <p>Develop musical literacy and listening skills.</p>
+        </div>
+
+        <div class="step reveal">
+            <span>03</span>
+            <h3>Develop</h3>
+            <p>Build technique, repertoire and independence.</p>
+        </div>
+
+        <div class="step reveal">
+            <span>04</span>
+            <h3>Express</h3>
+            <p>Find an individual artistic voice through music.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ARTISTIC LIFE -->
+
+<section class="performance" id="performance">
+
+    <div class="reveal">
+
+        <div class="eyebrow">Beyond education</div>
+
+        <h2>
+            A life enriched
+            by artistic exchange.
+        </h2>
+
+    </div>
+
+    <div class="reveal">
+
+        <p class="body-copy">
+            Music education does not exist in isolation.
+
+            <br><br>
+
+            Through concerts, collaborations, workshops
+            and artistic projects, Only Musique seeks to
+            connect students, musicians and audiences
+            with the wider world of classical music.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="eyebrow reveal">Begin your musical journey</div>
+
+    <h2 class="reveal">
+        Let's make<br>
+        music matter.
+    </h2>
+
+    <p class="body-copy reveal">
+        Interested in learning with us, collaborating
+        or exploring an artistic project?
+        We would be delighted to hear from you.
+    </p>
+
+    <a href="mailto:contact@yourdomain.com"
+       class="button button-dark reveal">
+        GET IN TOUCH ↗
+    </a>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-logo">ONLY MUSIQUE</div>
+
+    <p>Music, thoughtfully taught.</p>
+
+    <p>© 2026 Only Musique. All rights reserved.</p>
+
+</footer>
+
+
+<!-- INTERACTIONS -->
+
+<script>
+
+// MOBILE NAVIGATION
+
+const menuToggle = document.getElementById("menuToggle");
+const navigation = document.getElementById("navigation");
+
+menuToggle.addEventListener("click", function() {
+
+    navigation.classList.toggle("active");
+
+    const isOpen = navigation.classList.contains("active");
+
+    menuToggle.setAttribute("aria-expanded", isOpen);
+
+    menuToggle.textContent = isOpen ? "×" : "☰";
+
+});
+
+// CLOSE MOBILE MENU AFTER CLICKING A LINK
+
+navigation.querySelectorAll("a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        navigation.classList.remove("active");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+
+        menuToggle.textContent = "☰";
+
+    });
+
+});
+
+// HEADER SCROLL EFFECT
+
+window.addEventListener("scroll", function() {
+
+    const header = document.getElementById("header");
+
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+
+});
+
+// FLUID SECTION REVEALS
+
+const observer = new IntersectionObserver(
+
+    function(entries) {
+
+        entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold: 0.12
+    }
+
+);
+
+document.querySelectorAll(".reveal").forEach(function(element) {
+
+    observer.observe(element);
+
+});
+
+</script>
+
 </body>
 </html>
